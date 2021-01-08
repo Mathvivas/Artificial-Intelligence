@@ -1,0 +1,21 @@
+-- Depth-First Search --
+
+Search algorithm that always expands the deepest node in the 
+frontier.
+
+-- Breadth-First Search --
+
+Search algorithm that always expands the shallowest node in the
+frontier.
+
+-- Greedy Best-First Search --
+
+Search algorithm that expands the node that is closest to the goal, 
+as estimated by a heuristic function h(n).
+
+-- A* Search --
+
+Search algorithm that expands node with lowest value of g(n) + h(n).
+
+g(n) = cost to reach node
+h(n) = estimated cost to goal

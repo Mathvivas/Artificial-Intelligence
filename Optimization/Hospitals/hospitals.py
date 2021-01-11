@@ -148,13 +148,13 @@ class Space():
              self.height * cell_size + cost_size + padding * 2),
             "white"
         )
-        house = Image.open("assets/images/House.png").resize(
+        house = Image.open("./Hospitals/assets/images/House.png").resize(
             (cell_size, cell_size)
         )
-        hospital = Image.open("assets/images/Hospital.png").resize(
+        hospital = Image.open("./Hospitals/assets/images/Hospital.png").resize(
             (cell_size, cell_size)
         )
-        font = ImageFont.truetype("assets/fonts/OpenSans-Regular.ttf", 30)
+        font = ImageFont.truetype("./Hospiatls/assets/fonts/OpenSans-Regular.ttf", 30)
         draw = ImageDraw.Draw(img)
 
         for i in range(self.height):

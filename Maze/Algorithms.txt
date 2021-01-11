@@ -19,3 +19,8 @@ Search algorithm that expands node with lowest value of g(n) + h(n).
 
 g(n) = cost to reach node
 h(n) = estimated cost to goal
+
+-- Local Search --
+
+Search algorithms that maintain a single node and searches by
+moving to a neighboring node.

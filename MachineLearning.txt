@@ -71,7 +71,12 @@ more general hypotheses.
 Splitting data into a training set and a test set, such that learning
 happens on the training set and is evaluated on the test set.
 
+- K-Fold Cross-Validation:
 
+Splitting data into 'k' sets, and experimenting 'k' times, using each
+set as a test set once, and using remaining data as training set.
+
+Python Library --> scikit-learn
 
 
 

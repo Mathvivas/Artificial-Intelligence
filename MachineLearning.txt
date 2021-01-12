@@ -1,0 +1,77 @@
+------- Supervised Learning ------- 
+
+Given a data set of input-output pairs, learn a function to map
+inputs to outputs.
+
+- Classification:
+
+Supervised learning task of learning a function mapping an input 
+point to a discrete category.
+
+Ex: Weather
+Data of past days: Humidity, Pressure, Rain (Boolean)
+AI needs to find patterns in the data
+
+f(humidity, pressure) = Rain?
+
+Hypothesis Function - Approximation 
+h(humidity, pressure)
+
+- Colocando os dados em um gráfico: 
+Dias chuvosos: pontos azuis
+Dias não chuvosos: pontos vermelhos
+
+- Nearest-Neighbor Classification:
+
+Algorithm that, given an input, chooses the class of the nearest
+data point to that input.
+
+Se for colocado um ponto onde os vizinhos são vermelhos, será 
+considerado vermelho.
+Considerando vários vizinhos pode dar uma visão melhor
+
+- K-Nearest-Neighbor Classification:
+
+Agorithm that, given an input, chooses the most common class
+out of the 'k' nearest data point to that input.
+
+
+Achar uma "fronteira" ajuda a resolver mais rapidamente:
+Ex: Separar os dados por uma linha.
+
+- Hard Threshold: Valores 0 (não chove) e 1 (chove).
+- Soft Threshold: Valores reais de 0 a 1 -> Gera uma problabilidade
+de chover e de não chover.
+
+
+- Support Vector Machines:
+
+Maximum Margin Separator: boundary that maximizes the distance
+between any of the data points.
+
+As Vector Machines conseguem operar em dimensões maiores, cujo
+resultado seja uma fronteira capaz de dividir os dados de uma forma
+que não seja uma reta.
+
+- Overfitting:
+
+A model that fits too closely to a PARTICULAR data set and therefore
+may fail to generalize to future data. 
+
+Isso pode acontecer quando se tenta minimizar a perda (perda = 0).
+O modelo não pode focar em somente um set de data. 
+
+- Regularization:
+
+Penalizing hypotheses that are more complex to favor simpler, 
+more general hypotheses.
+
+- Holdout Cross-Validation:
+
+Splitting data into a training set and a test set, such that learning
+happens on the training set and is evaluated on the test set.
+
+
+
+
+

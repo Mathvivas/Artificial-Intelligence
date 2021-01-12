@@ -1,2 +1,3 @@
 # Artificial-Intelligence
- Testes e projetos relacionados com AI.
+ Projetos realizados através do curso da CS50 no edx.org.
+ Curso --> CS50's Introduction to Artificial Intelligence with Python.

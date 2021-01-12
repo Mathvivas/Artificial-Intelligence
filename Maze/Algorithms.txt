@@ -24,3 +24,13 @@ h(n) = estimated cost to goal
 
 Search algorithms that maintain a single node and searches by
 moving to a neighboring node.
+
+-- Minimax --
+
+TIC-TAC-TOE Game
+O wins --> -1
+X wins --> 1
+No one wins --> 0
+
+X wants to maximize the score
+O wants to minimize the score

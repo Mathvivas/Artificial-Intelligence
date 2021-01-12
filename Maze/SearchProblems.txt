@@ -1,0 +1,68 @@
+------- Search Problems ------- 
+
+Agent: entity that perceives its environment and acts upon that 
+environment. Ex: GPS - Car.
+
+State: a configuration of the agent and its environment.
+Ex: GPS - Car's position.
+
+Actions: choices that can be made in a state.
+Ex: GPS - Turn left, turn right.
+Actions(s) returns the set of actions that can be executed in state s.
+
+Transition Model: a description of what state results from 
+performing any applicable action in any state.
+Result(s, a) returns the state resulting from performing action a in 
+state s.
+
+State Space: the set of all states reachable from the initial state by
+any sequence of actions.
+
+Goal Test: way to determine whether a given state is a goal state.
+
+Path Cost: numerical cost associated with a given path.
+
+Solution: a sequence of actions that leads from the initial state
+to a goal state.
+
+Optimal Solution: a solution that has the lowest path cost among all 
+solutions.
+
+Node: a data structure that keeps track of:
+- a state
+- a parent (to know the parent, is to know the path)
+- an action (action applied to parent to get node)
+- a path cost
+
+------- Approach ------- 
+
+- Start with a frontier that contains the initial state.
+- Repeat:
+	- If the frontier is empty, then no solution.
+	- Remove a node from the frontier.
+	- If node contains goal state, return the solution.
+	- Expand node, add resulting nodes to the frontier.
+- Not always a good approach - Can get stuck.
+
+------- Revised Approach ------- 
+
+- Start with a frontier that contains the initial state.
+- Start with an empty explored set.
+- Repeat:
+	- If the frontier is empty, then no solution.
+	- Remove a node from the frontier.
+	- If node contains goal state, return the solution.
+	- Add the node to the explored set.
+	- Expand node, add resulting nodes to the frontier if
+	they aren't already in the frontier or the explored set.
+	
+
+------- TIC TAC TOE Game ------- 
+
+S0: initial state
+Player(s): returns which player to move in state 's'
+Actions(s): returns legal moves in state 's'
+Result(s, a): returns state after action 'a' taken in state 's'
+Terminal(s): checks if state 's' is a terminal state
+Utility(s): final numerical value for terminal state 's'
+

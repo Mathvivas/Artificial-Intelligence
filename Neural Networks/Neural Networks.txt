@@ -1,0 +1,84 @@
+- Neural Network
+
+Neurons are connected to and receive electrical signals from other
+neurons.
+Neurons process input signals and can be activated.
+
+- Artificial Neural Network
+
+Mathematical model for learning inspired by biological neural 
+network.
+Model mathematical function from inputs to outputs based on the 
+structure and parameters of the network.
+Allows for learning the networks's parameters based on data.
+
+h(x1, x2) = wo + w1x1 + w2x2
+
+- Step Function --> g(x) = 1 if x >= 0, else 0
+
+- Logistic Sigmoid Function --> g(x) = (e^x) / (e^x + 1)
+Gera Probabilidade, pois possui números reais.
+
+- Rectified Linear Unit Function (ReLU) --> g(x) = max(0, x)
+
+___ OR ___
+
+Usando a Step Function --> g(-1 + 1x1 + 1x2)
+
+If x1 = 0 and x2 = 0, then g() = 0
+If x1 = 1 and x2 = 1, then g() = 1
+
+___ AND ___
+
+Usando a Step Function --> g(-2 + 1x1 + 1x2)
+
+
+Tendo 3 entradas: g(wo + w1x1 + w2x2 + w3x3)
+
+
+-- Gradient Descent --
+
+Algorithm for minimizing loss when training neural network.
+
+- Start with a random choice of weights.
+- Repeat:
+	- Calculate the gradient based on all data points:
+	direction that will lead to decreasing loss.
+	- Update weights according to the gradient.
+
+-- Mini-Batch Gradient Descent --
+
+- Start with a random choice of weights.
+- Repeat:
+	- Calculate the gradient based on one small batch:
+	direction that will lead to decreasing loss.
+	- Update weights according to the gradient.
+
+
+-- Perceptron --
+
+- Only capable of learning linearly separable decision boundary.
+
+
+-- Multilayer Neural Network --
+
+- Artificial neural network with an input layer, an output layer, 
+and at least one hidden layer.
+- Gera a habilidade de calcular funções mais complexas.
+
+
+-- Backpropagation --
+
+- Algorithm for training neural networks with hidden layers.
+- Start with a random choice of weights.
+- Repeat:
+	- Calculate error for output layer.
+	- For each layer, starting with output layer, and moving
+	inwards towards earliest hidden layer:
+		- Propagate error back one layer.
+		- Update weights.
+
+
+-- Deep Neural Networks --
+
+- Neural network with multiple hidden layers.

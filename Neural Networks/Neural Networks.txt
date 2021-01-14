@@ -66,6 +66,10 @@ Algorithm for minimizing loss when training neural network.
 and at least one hidden layer.
 - Gera a habilidade de calcular funções mais complexas.
 
+- Site: playground.tensorflow.org
+- Cada neuron do hidden layer aprende um certo padrão, que depois são juntados, 
+gerando o resultado.
+
 
 -- Backpropagation --
 
@@ -82,3 +86,22 @@ and at least one hidden layer.
 -- Deep Neural Networks --
 
 - Neural network with multiple hidden layers.
+
+
+-- Dropout --
+
+Temporary removing units (selected at random) from a neural network to prevent
+over-reliance on certain units.
+
+
+-- Image Convolution --
+
+Applying a filter that adds each pixel value of an image to its neighbors, 
+weighted according to a kernel matrix.
+
+
+-- Pooling --
+
+Reducing the size of an input by sampling from regions in the input.
+
+

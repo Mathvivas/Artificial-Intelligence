@@ -1,0 +1,25 @@
+- Formal Grammar:
+
+A system of rules for generating sentences in a language.
+
+- n-gram:
+
+A contiguous sequence of n items from a sample of text.
+
+- Naive Bayes (Probabilidade de Bayes):
+
+Análise de sentimentos - Feedbacks positivos e negativos.
+
+
+--- word2vec ---
+
+Algorithm for generating distributed representations of words. 
+In the end of the process, every word ends up being just a vector, or a sequence of numbers.
+The AI is able to generate words that really are very similar to book not in letters or sounds, but in meaning.
+
+We can also compute the difference between words based on how different their vectors are. For example:
+the difference between king and man is similar to the difference between queen and woman.
+That is, if we add the difference between king and man to the vector for woman, the closest word to the resulting vector is queen.
+
+By using neural networks and distributed representations for words, we get our AI to understand semantic similarities between words
+in the language.

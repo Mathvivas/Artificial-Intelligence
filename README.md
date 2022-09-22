@@ -1,3 +1,8 @@
-# Artificial-Intelligence
- Projetos realizados através do curso da CS50 no edx.org.
- Curso --> CS50's Introduction to Artificial Intelligence with Python.
+# Artificial Intelligence
+
+- Projects of Artificial Intelligence in general:
+  - Deep Learning;
+  - Machine Learning;
+  - Machine Vision;
+  - Reinforcement Learning;
+  - Others.

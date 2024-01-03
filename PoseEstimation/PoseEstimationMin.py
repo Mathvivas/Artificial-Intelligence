@@ -6,6 +6,8 @@ mpDraw = mp.solutions.drawing_utils
 mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 
+# To be able to use Pose Estimation on live camera
+#cap = cv2.VideoCapture(0)
 cap = cv2.VideoCapture('videos/4.mp4')
 pTime = 0
 

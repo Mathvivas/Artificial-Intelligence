@@ -17,7 +17,20 @@ while True:
 
     if results.detections:
         for id, detection in enumerate(results.detections):
-            mpDraw.draw_detection(img, detection)
+            # Draws the rectangle by it self
+            #mpDraw.draw_detection(img, detection)
+            #print(detection.location_data.relative_bounding_box)
+            # xmin: 0.692426323890686
+            # ymin: 0.22430972754955292
+            # width: 0.18528950214385986
+            # height: 0.24705280363559723
+            
+            # Drawing the rectangle by hand
+            bboxC = detection.location_data.relative_bounding_box
+            h, w, c = img.shape
+            bbox = int(bboxC.xmin * w), int(bboxC.ymin * h), \
+                    int(bboxC.width * w), int(bboxC.height * h)
+            cv2.rectangle(img, bbox, (255, 0, 255), 2)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

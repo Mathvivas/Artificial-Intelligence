@@ -24,13 +24,16 @@ while True:
             # ymin: 0.22430972754955292
             # width: 0.18528950214385986
             # height: 0.24705280363559723
-            
+
             # Drawing the rectangle by hand
             bboxC = detection.location_data.relative_bounding_box
             h, w, c = img.shape
             bbox = int(bboxC.xmin * w), int(bboxC.ymin * h), \
                     int(bboxC.width * w), int(bboxC.height * h)
             cv2.rectangle(img, bbox, (255, 0, 255), 2)
+            cv2.putText(img, f'{int(detection.score[0]*100)}%', 
+                        (bbox[0], bbox[1] - 20), 
+                cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

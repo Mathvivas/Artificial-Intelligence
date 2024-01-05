@@ -36,6 +36,8 @@ pTime = 0
 
 detector = htm.HandDetector(detectionConfidence=0.7)
 
+vol = 0
+volBar = 400
 
 while True:
     success, img = cap.read()
@@ -61,10 +63,16 @@ while True:
         #### Volume range 0 - 100
         # Converting hand range to volume range with numpy
         vol = np.interp(length, [50, 300], [0, 100])
+        volBar = np.interp(length, [50, 300], [400, 150])
         set_volume(vol)
 
         if length < 50:
             cv2.circle(img, (cx, cy), 15, (0, 255, 0), cv2.FILLED)
+
+    cv2.rectangle(img, (50, 150), (85, 400), (255, 0, 0), 3)
+    cv2.rectangle(img, (50, int(volBar)), (85, 400), (255, 0, 0), cv2.FILLED)
+    cv2.putText(img, f'{int(vol)}%', (40, 450), 
+                cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 3)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

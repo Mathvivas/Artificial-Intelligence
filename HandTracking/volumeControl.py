@@ -3,9 +3,28 @@ import time
 import numpy as np
 import HandTrackingModule as htm
 import math
-from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+import subprocess
+
+def get_volume():
+	proc = subprocess.Popen('/usr/bin/amixer sget Master', shell=True, stdout=subprocess.PIPE)
+	amixer_stdout = str(proc.communicate()[0],'UTF-8').split('\n')[4]
+	proc.wait()
+	find_start = amixer_stdout.find('[') + 1
+	find_end = amixer_stdout.find('%]', find_start)
+	return float(amixer_stdout[find_start:find_end])
+
+def set_volume(volume):
+	val = volume
+	val = float(int(val))
+	proc = subprocess.Popen('/usr/bin/amixer sset Master ' + str(val) + '%', shell=True, stdout=subprocess.PIPE)
+	proc.wait()
+
+# print("Current volume: ", get_volume())
+# set_volume(0)
+# print("Current volume (changed): ", get_volume())
+# set_volume(100)
+# print("Current volume (changed): ", get_volume())
+
 
 wCam, hCam = 1280, 720
 
@@ -14,18 +33,9 @@ cap.set(3, wCam)
 cap.set(4, hCam)
 pTime = 0
 
+
 detector = htm.HandDetector(detectionConfidence=0.7)
 
-devices = AudioUtilities.GetSpeakers()
-interface = devices.Activate(
-    IAudioEndpointVolume._iid_, CLSCTX_ALL, None
-)
-volume = cast(interface, POINTER(IAudioEndpointVolume))
-# volume.GetMute()
-# volume.GetMasterVolumeLevel()
-volRange = volume.GetVolumeRange()
-minVol = volRange[0]
-maxVol = volRange[1]
 
 while True:
     success, img = cap.read()
@@ -48,10 +58,10 @@ while True:
         length = math.hypot(x2 - x1, y2 - y1)
 
         #### Hand range 50 - 300
-        #### Volume range -65 - 0
+        #### Volume range 0 - 100
         # Converting hand range to volume range with numpy
-        vol = np.interp(length, [50, 300], [minVol, maxVol])
-        volume.SetMasterVolumeLevel(vol, None)
+        vol = np.interp(length, [50, 300], [0, 100])
+        set_volume(vol)
 
         if length < 50:
             cv2.circle(img, (cx, cy), 15, (0, 255, 0), cv2.FILLED)

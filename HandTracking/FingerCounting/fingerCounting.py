@@ -1,6 +1,7 @@
 import cv2
 import time
 import os
+import HandTrackingModule as htm
 
 wCam, hCam = 640, 480
 
@@ -17,6 +18,8 @@ for png in myList:
     overlayList.append(image)
 
 pTime = 0
+detector = htm.HandDetector(detectionConfidence=0.75)
+
 while True:
     success, img = cap.read()
 

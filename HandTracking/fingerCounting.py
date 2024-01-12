@@ -12,14 +12,17 @@ cap.set(4, hCam)
 folderPath = 'fingers'
 myList = os.listdir(folderPath)
 # print(myList)
+myList.sort()
 overlayList = []
 for png in myList:
     image = cv2.imread(f'{folderPath}/{png}')
     overlayList.append(image)
 
+print(myList)
+
 pTime = 0
 detector = htm.HandDetector(detectionConfidence=0.75)
-# Number of the fingers, in order
+# Number of the fingers, in order, starting with the thumb
 tipIds = [4, 8, 12, 16, 20]
 
 while True:
@@ -30,19 +33,28 @@ while True:
 
     if len(lmlist) != 0:
         fingers = []
-        for id in range(0, 5):
+        # Checking the x-axis of the thumb with one value below it
+        if lmlist[tipIds[0]][1] < lmlist[tipIds[0]-1][1]:
+            fingers.append(1)
+        else:
+            fingers.append(0)
+
+        # for loop for all of the fingers, except the thumb
+        for id in range(1, 5):
             # Index of the finger, gets the y-axis pixels (height, number 2)
             # It checks if the finger is closed or open based on the position
             if lmlist[tipIds[id]][2] < lmlist[tipIds[id]-2][2]:
                 fingers.append(1)
             else:
                 fingers.append(0)
-        print(fingers)
+        # print(fingers)
+        totalFingers = fingers.count(1)
+        # print(totalFingers)
 
-    # Each image is 64x64
-    h, w, c = overlayList[0].shape
-    # h+10 because it starts at 10
-    img[10:h+10, 10:w+10] = overlayList[0]
+        # Each image is 64x64
+        h, w, c = overlayList[0].shape
+        # h+10 because it starts at 10
+        img[10:h+10, 10:w+10] = overlayList[totalFingers]
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)

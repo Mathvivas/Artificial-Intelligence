@@ -23,8 +23,18 @@ class CustomEfficientNetB0(nn.Module):
         # Altering last layer's output size
         self.model.classifier[1] = nn.Linear(1280, 1280, bias=True)
 
-        self.classifier_head = nn.Linear(in_features, num_classes)
-        self.regressor_head = nn.Linear(in_features, num_coordinates)
+        # Freeze all layers
+        for param in self.model.parameters():
+            param.requires_grad = False
+
+        self.regressor_head = nn.Sequential(
+            nn.Linear(in_features, num_coordinates),
+            nn.ReLU()
+        )
+        self.classifier_head = nn.Sequential(
+            nn.Linear(in_features, num_classes),
+            nn.Sigmoid()
+        )
 
     def forward(self, x):
         y = self.model(x)

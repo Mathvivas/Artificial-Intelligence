@@ -1,5 +1,6 @@
 from huggingface_hub import hf_hub_download
 from ultralytics import YOLO
+from ultralytics.utils.plotting import Annotator
 from supervision import Detections
 from PIL import Image
 import cv2
@@ -22,6 +23,16 @@ while True:
 
     output = model(img_tensor)
     results = Detections.from_ultralytics(output[0])
+
+    print(results.xyxy)
+    boxes = results.xyxy.tolist()
+    print(results.data['class_name'])
+    class_names = results.data['class_name'].tolist()
+
+    annotator = Annotator(img, line_width=2)
+
+    for box, class_name in zip(boxes, class_names):
+        annotator.box_label(box, color=(0,0,255), label=class_name)
 
     cv2.imshow('Image', img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
